@@ -1,10 +1,10 @@
 name:                fib
-version:             0.1.0.0
+version:             1
 github:              "hiljusti/fib"
 license:             BSD3
 author:              "J.R. Hill"
 maintainer:          "hiljusti@pm.me"
-copyright:           "WTFPL"
+copyright:           "Copyright (c) 2021 J.R.Hill"
 
 extra-source-files:
 - README.md

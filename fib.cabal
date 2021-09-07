@@ -5,13 +5,13 @@ cabal-version: 1.12
 -- see: https://github.com/sol/hpack
 
 name:           fib
-version:        0.1.0.0
+version:        1
 description:    Please see the README on GitHub at <https://github.com/hiljusti/fib#readme>
 homepage:       https://github.com/hiljusti/fib#readme
 bug-reports:    https://github.com/hiljusti/fib/issues
 author:         J.R. Hill
 maintainer:     hiljusti@pm.me
-copyright:      WTFPL
+copyright:      Copyright (c) 2021 J.R.Hill
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
@@ -25,7 +25,7 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      FibLib
   other-modules:
       Paths_fib
   hs-source-dirs:

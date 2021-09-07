@@ -1,4 +1,4 @@
-module Lib ( runFibber ) where
+module FibLib ( runFibber ) where
 
 import System.Exit
 import Data.Char
