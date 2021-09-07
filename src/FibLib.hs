@@ -42,6 +42,7 @@ runFibber [] = stdinFibber
 runFibber ["--help"] = printHelp
 runFibber ["-h"] = printHelp
 runFibber ["--until", n] = untilFibber n
+runFibber ("--until":_) = usageError
 runFibber args = argFibber args
 
 stdinFibber :: IO ()
