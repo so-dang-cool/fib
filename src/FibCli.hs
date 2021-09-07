@@ -34,7 +34,7 @@ type CommandLineArgs = [String]
 -- CLI messages
 
 programVersion :: String
-programVersion = "fib v1"
+programVersion = "fib v1.1"
 
 pad :: String -> String
 pad s = "  " ++ s
