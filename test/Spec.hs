@@ -57,7 +57,10 @@ main = hspec $ do
       let run = fibCli [] "1\nabc\n4"
       it "prints \"ERROR: ...\" to stdout (only second line)" $ do
         (_, stdout, _) <- run
-        lines stdout `shouldSatisfy` \[one, fail, three] -> one == "1" && ((== "ERROR:") . take 6 $ fail) && three == "3"
+        lines stdout `shouldSatisfy` \[one, fail, three] ->
+          one == "1"
+            && ((== "ERROR:") . take 6 $ fail)
+            && three == "3"
       it "exits successfully" $ do
         (exitCode, _, _) <- run
         exitCode `shouldBe` ExitSuccess
