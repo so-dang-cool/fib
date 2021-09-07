@@ -6,7 +6,9 @@ cabal-version: 1.12
 
 name:           fib-cli
 version:        1.1
+synopsis:       A CLI for calculating Fibonacci numbers.
 description:    Please see the README on GitHub at <https://github.com/hiljusti/fib#readme>
+category:       Command Line
 homepage:       https://github.com/hiljusti/fib#readme
 bug-reports:    https://github.com/hiljusti/fib/issues
 author:         J.R. Hill
