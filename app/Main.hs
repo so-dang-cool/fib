@@ -1,7 +1,8 @@
 module Main where
 
+import System.Environment
 import Lib
 
 main :: IO ()
-main = interact $ unlines . map fibber . zip [1..] . lines
+main = getArgs >>= runFibber
 
