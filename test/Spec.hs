@@ -69,6 +69,7 @@ main = hspec $ do
         stderr `shouldBe` ""
 
   describe "[args] fib <N>..." $ do
+
     context "given 0 from args" $ do
       let run = fibCli ["0"] ""
       it "prints 0" $ do
@@ -94,7 +95,8 @@ main = hspec $ do
         stderr `shouldBe` ""
 
   describe "[seq] fib --until N" $ do
-    context "given \"--until 10\" from stdin" $ do
+
+    context "given \"--until 10\"" $ do
       let run = fibCli ["--until", "10"] ""
       it "prints sequence as lines" $ do
         (_, stdout, _) <- run
@@ -106,7 +108,7 @@ main = hspec $ do
         (_, _, stderr) <- run
         stderr `shouldBe` ""
 
-    context "given \"--until\" from stdin (missing argument to --until)" $ do
+    context "given \"--until\" (missing argument to --until)" $ do
       let run = fibCli ["--until"] ""
       it "prints nothing to stdout" $ do
         (_, stdout, _) <- run
@@ -118,7 +120,7 @@ main = hspec $ do
         (_, _, stderr) <- run
         stderr `shouldSatisfy` ((== "USAGE:") . take 6)
 
-    context "given \"--until 1 2\" from stdin (too many arguments to --until)" $ do
+    context "given \"--until 1 2\" (too many arguments to --until)" $ do
       let run = fibCli ["--until", "1", "2"] ""
       it "prints nothing to stdout" $ do
         (_, stdout, _) <- run
@@ -129,6 +131,20 @@ main = hspec $ do
       it "prints \"USAGE: ...\" to stderr" $ do
         (_, _, stderr) <- run
         stderr `shouldSatisfy` ((== "USAGE:") . take 6)
+
+  describe "[help] fib --help" $ do
+
+    context "given \"--help\"" $ do
+      let run = fibCli ["--help"] ""
+      it "prints something to stdout" $ do
+        (_, stdout, _) <- run
+        stdout `shouldSatisfy` (> 0) . length
+      it "exits successfully" $ do
+        (exitCode, _, _) <- run
+        exitCode `shouldBe` ExitSuccess
+      it "prints nothing to stderr" $ do
+        (_, _, stderr) <- run
+        stderr `shouldBe` ""
 
 -- Helpers
 
