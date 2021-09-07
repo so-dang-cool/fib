@@ -1,7 +1,7 @@
-module FibLib ( runFibber ) where
+module FibLib (runFibber) where
 
-import System.Exit
 import Data.Char
+import System.Exit
 
 -- CLI messages
 
@@ -15,17 +15,17 @@ usage :: String
 usage = unlines $ "USAGE:" : map pad ["fib", "fib <N>...", "fib --until N"]
 
 docs :: String
-docs = unlines
-  [
-    "The program fib generates numbers from the fibonacci sequence. When",
-    "run without arguments, it reads lines of integers from standard",
-    "input. For each integer N, the Nth member of the sequence is printed,",
-    "separated by lines. Integers can also be provided as arguments to get",
-    "the same (line-separated) output.",
-    "",
-    "When the --until flag is used, all members of the sequence are printed",
-    "on separate lines, finishing with the Nth member of the sequence."
-  ]
+docs =
+  unlines
+    [ "The program fib generates numbers from the fibonacci sequence. When",
+      "run without arguments, it reads lines of integers from standard",
+      "input. For each integer N, the Nth member of the sequence is printed,",
+      "separated by lines. Integers can also be provided as arguments to get",
+      "the same (line-separated) output.",
+      "",
+      "When the --until flag is used, all members of the sequence are printed",
+      "on separate lines, finishing with the Nth member of the sequence."
+    ]
 
 -- CLI message handlers
 
@@ -56,13 +56,13 @@ untilFibber = putStr . sequenceFibber
 -- Fibonacci generation
 
 lineFibber :: String -> [String] -> String
-lineFibber label = unlines . map fibber . zip [1..]
+lineFibber label = unlines . map fibber . zip [1 ..]
   where
     fibber :: (Int, String) -> String
-    fibber (line, "") = "[ERROR] " ++ label ++ " " ++ show line ++ " is empty."
+    fibber (line, "") = "ERROR: " ++ label ++ " " ++ show line ++ " is empty."
     fibber (line, num)
       | all isDigit num = fib . read $ num
-      | otherwise = "[ERROR] " ++ label ++ " " ++ show line ++ " is not a non-negative integer."
+      | otherwise = "ERROR: " ++ label ++ " " ++ show line ++ " is not a non-negative integer."
 
 sequenceFibber :: String -> String
 sequenceFibber = unlines . fibSeq . read
@@ -75,4 +75,3 @@ fibSeq n = map show . take (n + 1) $ fibs
 
 fibs :: [Integer]
 fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
-

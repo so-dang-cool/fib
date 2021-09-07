@@ -1,8 +1,7 @@
 module Main where
 
-import System.Environment
 import FibLib
+import System.Environment
 
 main :: IO ()
 main = getArgs >>= runFibber
-
