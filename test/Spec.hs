@@ -136,9 +136,9 @@ main = hspec $ do
 
     context "given \"--help\"" $ do
       let run = fibCli ["--help"] ""
-      it "prints something to stdout" $ do
+      it "prints name and version to stdout" $ do
         (_, stdout, _) <- run
-        stdout `shouldSatisfy` (> 0) . length
+        stdout `shouldSatisfy` (== "fib v1.1") . head . lines
       it "exits successfully" $ do
         (exitCode, _, _) <- run
         exitCode `shouldBe` ExitSuccess
