@@ -1,3 +1,5 @@
 # Changelog for fib
 
-## Unreleased changes
+## v1
+
+- I made a thing.
