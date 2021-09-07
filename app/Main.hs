@@ -1,6 +1,6 @@
 module Main where
 
-import FibLib
+import FibCli
 import System.Environment
 
 main :: IO ()

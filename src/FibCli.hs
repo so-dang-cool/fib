@@ -1,7 +1,35 @@
-module FibLib (runFibber) where
+{-|
+Module      : FibCli
+Description : A simple implementation of a Fibonacci sequence CLI.
+Copyright   : Copyright (c) 2021 J.R. Hill
+License     : BSD3
+Maintainer  : hiljusti@pm.me
+Stability   : Don't Panic
+
+This module is not intended for use as a library for anything other
+than its own CLI. Feel free to try it out though. Let me know if you
+do something interesting with it.
+
+For CLI usage instructions, run it with a '--help' flag.
+
+Versioning for the project is NOT semantic versioning. Versions will
+follow the Fibonacci sequence.
+
+* 1
+* 1.1
+* 1.1.2
+* 1.1.2.3
+* 1.1.2.3.5
+
+...and so on.
+-}
+module FibCli (runFibber, CommandLineArgs) where
 
 import Data.Char
 import System.Exit
+
+-- |Arguments passed to the CLI.
+type CommandLineArgs = [String]
 
 -- CLI messages
 
@@ -41,8 +69,8 @@ usageError = die usage
 
 -- CLI runners
 
--- |The 'runFibber' function runs the 'fib' CLI.
-runFibber :: [String] -> IO ()
+-- |The 'runFibber' function runs a "fib" CLI.
+runFibber :: CommandLineArgs -> IO ()
 runFibber [] = stdinFibber
 runFibber ["--help"] = printHelp
 runFibber ["-h"] = printHelp

@@ -25,7 +25,7 @@ source-repository head
 
 library
   exposed-modules:
-      FibLib
+      FibCli
   other-modules:
       Paths_fib_cli
   hs-source-dirs:
