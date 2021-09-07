@@ -17,26 +17,31 @@ usage = unlines $ "USAGE:" : map pad ["fib", "fib <N>...", "fib --until N"]
 docs :: String
 docs =
   unlines
-    [ "The program fib generates numbers from the fibonacci sequence. When",
-      "run without arguments, it reads lines of integers from standard",
-      "input. For each integer N, the Nth member of the sequence is printed,",
-      "separated by lines. Integers can also be provided as arguments to get",
-      "the same (line-separated) output.",
+    [ "Calculate members of the Fibonacci sequence.",
       "",
-      "When the --until flag is used, all members of the sequence are printed",
-      "on separate lines, finishing with the Nth member of the sequence."
+      "Every N provided as an argument will return a line with the Nth member",
+      "of the Fibonacci sequence. When no arguments are provided, the program",
+      "instead reads lines from standard input. Arguments (or lines from",
+      "standard input) should be non-negative integer values.",
+      "",
+      "When '--until N' is used, all members of the sequence are printed on",
+      "separate lines, finishing with the Nth member of the sequence."
     ]
+
+attribution :: String
+attribution = "This project lives at https://github.com/hiljusti/fib"
 
 -- CLI message handlers
 
 printHelp :: IO ()
-printHelp = putStrLn $ unlines [programVersion, "", usage, docs]
+printHelp = putStr $ unlines [programVersion, "", usage, docs, attribution]
 
 usageError :: IO a
 usageError = die usage
 
 -- CLI runners
 
+-- |The 'runFibber' function runs the 'fib' CLI.
 runFibber :: [String] -> IO ()
 runFibber [] = stdinFibber
 runFibber ["--help"] = printHelp
