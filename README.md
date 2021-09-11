@@ -1,6 +1,6 @@
 # fib
 
-```
+```text
 fib v1.1
 
 USAGE:
@@ -20,3 +20,22 @@ separate lines, finishing with the Nth member of the sequence.
 
 This project lives at https://github.com/hiljusti/fib
 ```
+
+## Requirements
+
+- [GHC](https://www.haskell.org/downloads/)
+- [Stack](https://docs.haskellstack.org/en/stable/README/)
+
+## Installation
+
+With Bash:
+
+```bash
+cd $(mktemp -d) \
+  && git clone https://github.com/hiljusti/fib.git \
+  && cd ./fib \
+  && stack install
+```
+
+...or something similar for your shell.
+
