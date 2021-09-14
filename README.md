@@ -26,16 +26,11 @@ This project lives at https://github.com/hiljusti/fib
 - [GHC](https://www.haskell.org/downloads/)
 - [Stack](https://docs.haskellstack.org/en/stable/README/)
 
-## Installation
-
-With Bash:
+## Installation through Stack
 
 ```bash
-cd $(mktemp -d) \
-  && git clone https://github.com/hiljusti/fib.git \
-  && cd ./fib \
-  && stack install
+cd $(mktemp -d) # Or wherever you prefer
+git clone https://github.com/hiljusti/fib.git
+cd ./fib
+stack install
 ```
-
-...or something similar for your shell.
-
