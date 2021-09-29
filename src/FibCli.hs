@@ -82,7 +82,7 @@ stdinFibber :: IO ()
 stdinFibber = interact (lineFibber "Line" . lines)
 
 argFibber :: [String] -> IO ()
-argFibber args = putStr . lineFibber "Argument" $ args
+argFibber = putStr . lineFibber "Argument"
 
 untilFibber :: String -> IO ()
 untilFibber = putStr . sequenceFibber
