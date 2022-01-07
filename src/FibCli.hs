@@ -25,8 +25,10 @@ follow the Fibonacci sequence.
 -}
 module FibCli (runFibber, CommandLineArgs) where
 
-import Data.Char
-import System.Exit
+import Data.Char ( isDigit )
+import System.Exit ( die )
+import qualified Data.Numbers.Fibonacci as FastFib
+import qualified Algorithm.Gutenberg.Fibonaccis as PreCalcFib
 
 -- |Arguments passed to the CLI.
 type CommandLineArgs = [String]
@@ -34,7 +36,7 @@ type CommandLineArgs = [String]
 -- CLI messages
 
 programVersion :: String
-programVersion = "fib v1.1"
+programVersion = "fib v1.1.2"
 
 pad :: String -> String
 pad s = "  " ++ s
@@ -52,8 +54,12 @@ docs =
       "instead reads lines from standard input. Arguments (or lines from",
       "standard input) should be non-negative integer values.",
       "",
+      "This CLI considers a 0-indexed sequence, where the 0th number is 0,",
+      "the 1st is 1, then 1, 2, 3, 5, 8...",
+      "",
       "When '--until N' is used, all members of the sequence are printed on",
-      "separate lines, finishing with the Nth member of the sequence."
+      "N+1 consecutive lines, including and ending with the Nth number of the",
+      "sequence."
     ]
 
 attribution :: String
@@ -78,6 +84,8 @@ runFibber ["--until", n] = untilFibber n
 runFibber ("--until":_) = usageError
 runFibber args = argFibber args
 
+-- Fibonacci at the IO level
+
 stdinFibber :: IO ()
 stdinFibber = interact (lineFibber "Line" . lines)
 
@@ -87,7 +95,7 @@ argFibber = putStr . lineFibber "Argument"
 untilFibber :: String -> IO ()
 untilFibber = putStr . sequenceFibber
 
--- Fibonacci generation
+-- Fibonacci at the String level
 
 lineFibber :: String -> [String] -> String
 lineFibber label = unlines . map fibber . zip [1 ..]
@@ -95,17 +103,28 @@ lineFibber label = unlines . map fibber . zip [1 ..]
     fibber :: (Int, String) -> String
     fibber (line, "") = "ERROR: " ++ label ++ " " ++ show line ++ " is empty."
     fibber (line, num)
-      | all isDigit num = fib . read $ num
+      | all isDigit num = show . fibN . read $ num
       | otherwise = "ERROR: " ++ label ++ " " ++ show line ++ " is not a non-negative integer."
 
 sequenceFibber :: String -> String
-sequenceFibber = unlines . fibSeq . read
+sequenceFibber = unlines . map show . (`take` fibs) . succ . read
 
-fib :: Int -> String
-fib n = show $ fibs !! n
+-- Fibonacci at the [Integer] level
 
-fibSeq :: Int -> [String]
-fibSeq n = map show . take (n + 1) $ fibs
+preCalculatedFibs :: [Integer]
+preCalculatedFibs = PreCalcFib.first1001Fibs
+
+fibN :: Int -> Integer
+fibN 0 = 0
+fibN n
+  | n <= 1001 = preCalculatedFibs !! (n-1)
+  | otherwise = FastFib.fib n
+
+calculatedFibs :: [Integer]
+calculatedFibs = a : b : zipWith (+) calculatedFibs (tail calculatedFibs)
+  where
+    a = fibN 1000
+    b = fibN 1001
 
 fibs :: [Integer]
-fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
+fibs = 0 : preCalculatedFibs ++ drop 2 calculatedFibs

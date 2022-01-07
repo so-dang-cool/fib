@@ -40,7 +40,9 @@ packages:
 # - git: https://github.com/commercialhaskell/stack.git
 #   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a
 #
-# extra-deps: []
+extra-deps:
+- fibonacci-0.2.0.1@sha256:a19c631caf424b11430defc65346a991921eef36631f11667837bfc189f70554,1062
+- gutenberg-fibonaccis-1.1.0@sha256:c17dd92d43b1394bc00f296a11fc195ab8eaf4411bdd16bf434f332f2db9e506,1061
 
 # Override default flag values for local packages and extra-deps
 # flags: {}

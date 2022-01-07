@@ -10,4 +10,18 @@ snapshots:
     sha256: 9f9fe35c949414146840a985fb228fd397c504d1781b834bfc9ab935f4d27df6
     url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/18/9.yaml
     size: 586923
-packages: []
+packages:
+- original:
+    hackage: fibonacci-0.2.0.1@sha256:a19c631caf424b11430defc65346a991921eef36631f11667837bfc189f70554,1062
+  completed:
+    pantry-tree:
+      sha256: 1357b9b2efca3a95f79506b1cf917daa51e61295b5618af1aa5bea875ddd6ce4
+      size: 275
+    hackage: fibonacci-0.2.0.1@sha256:a19c631caf424b11430defc65346a991921eef36631f11667837bfc189f70554,1062
+- original:
+    hackage: gutenberg-fibonaccis-1.1.0@sha256:c17dd92d43b1394bc00f296a11fc195ab8eaf4411bdd16bf434f332f2db9e506,1061
+  completed:
+    pantry-tree:
+      sha256: 3b10cbb0d5fad39e9c3cc3770df209e8cc28845ba46fd57cdae2d4479d5c221d
+      size: 247
+    hackage: gutenberg-fibonaccis-1.1.0@sha256:c17dd92d43b1394bc00f296a11fc195ab8eaf4411bdd16bf434f332f2db9e506,1061

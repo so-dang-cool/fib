@@ -1,5 +1,5 @@
 name:                fib-cli
-version:             1.1
+version:             1.1.2
 github:              "hiljusti/fib"
 license:             BSD3
 author:              "J.R. Hill"
@@ -21,6 +21,8 @@ description:         Please see the README on GitHub at <https://github.com/hilj
 
 dependencies:
 - base >= 4.7 && < 5
+- fibonacci == 0.2.0.1
+- gutenberg-fibonaccis == 1.1.0
 
 library:
   source-dirs: src
@@ -35,6 +37,8 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - fib-cli
+    - fibonacci
+    - gutenberg-fibonaccis
 
 tests:
   fib-test:

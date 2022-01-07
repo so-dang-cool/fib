@@ -94,6 +94,30 @@ main = hspec $ do
         (_, _, stderr) <- run
         stderr `shouldBe` ""
 
+    context "given 1001 (the final precalculated number) from args" $ do
+      let run = fibCli ["1001"] ""
+      it "prints the correct number" $ do
+        (_, stdout, _) <- run
+        stdout `shouldBe` "70330367711422815821835254877183549770181269836358732742604905087154537118196933579742249494562611733487750449241765991088186363265450223647106012053374121273867339111198139373125598767690091902245245323403501\n"
+      it "exits successfully" $ do
+        (exitCode, _, _) <- run
+        exitCode `shouldBe` ExitSuccess
+      it "prints nothing to stderr" $ do
+        (_, _, stderr) <- run
+        stderr `shouldBe` ""
+
+    context "given 1002 (the first calculated number) from args" $ do
+      let run = fibCli ["1002"] ""
+      it "prints the correct number" $ do
+        (_, stdout, _) <- run
+        stdout `shouldBe` "113796925398360272257523782552224175572745930353730513145086634176691092536145985470146129334641866902783673042322088625863396052888690096969577173696370562180400527049497109023054114771394568040040412172632376\n"
+      it "exits successfully" $ do
+        (exitCode, _, _) <- run
+        exitCode `shouldBe` ExitSuccess
+      it "prints nothing to stderr" $ do
+        (_, _, stderr) <- run
+        stderr `shouldBe` ""
+
   describe "[seq] fib --until N" $ do
 
     context "given \"--until 10\"" $ do
@@ -101,6 +125,30 @@ main = hspec $ do
       it "prints sequence as lines" $ do
         (_, stdout, _) <- run
         stdout `shouldBe` "0\n1\n1\n2\n3\n5\n8\n13\n21\n34\n55\n"
+      it "exits successfully" $ do
+        (exitCode, _, _) <- run
+        exitCode `shouldBe` ExitSuccess
+      it "prints nothing to stderr" $ do
+        (_, _, stderr) <- run
+        stderr `shouldBe` ""
+
+    context "given \"--until 1001\" (the final precalculated number)" $ do
+      let run = fibCli ["--until", "1001"] ""
+      it "ends with the correct number" $ do
+        (_, stdout, _) <- run
+        (last . lines $ stdout) `shouldBe` "70330367711422815821835254877183549770181269836358732742604905087154537118196933579742249494562611733487750449241765991088186363265450223647106012053374121273867339111198139373125598767690091902245245323403501"
+      it "exits successfully" $ do
+        (exitCode, _, _) <- run
+        exitCode `shouldBe` ExitSuccess
+      it "prints nothing to stderr" $ do
+        (_, _, stderr) <- run
+        stderr `shouldBe` ""
+
+    context "given \"--until 1002\" (the first calculated number)" $ do
+      let run = fibCli ["--until", "1002"] ""
+      it "ends with the correct number" $ do
+        (_, stdout, _) <- run
+        (last . lines $ stdout) `shouldBe` "113796925398360272257523782552224175572745930353730513145086634176691092536145985470146129334641866902783673042322088625863396052888690096969577173696370562180400527049497109023054114771394568040040412172632376"
       it "exits successfully" $ do
         (exitCode, _, _) <- run
         exitCode `shouldBe` ExitSuccess
@@ -138,7 +186,7 @@ main = hspec $ do
       let run = fibCli ["--help"] ""
       it "prints name and version to stdout" $ do
         (_, stdout, _) <- run
-        stdout `shouldSatisfy` (== "fib v1.1") . head . lines
+        stdout `shouldSatisfy` (== "fib v1.1.2") . head . lines
       it "exits successfully" $ do
         (exitCode, _, _) <- run
         exitCode `shouldBe` ExitSuccess
