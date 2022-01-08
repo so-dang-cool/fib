@@ -44,5 +44,5 @@ This project lives at https://github.com/hiljusti/fib
 cd $(mktemp -d) # Or wherever you prefer
 git clone https://github.com/hiljusti/fib.git
 cd ./fib
-stack install
+stack test && stack install
 ```
