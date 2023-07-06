@@ -1,10 +1,10 @@
 name:                fib-cli
-version:             1.1.2
-github:              "hiljusti/fib"
+version:             1.1.2.3
+github:              "booniepepper/fib"
 license:             BSD3
 author:              "J.R. Hill"
-maintainer:          "hiljusti@pm.me"
-copyright:           "Copyright (c) 2021 J.R.Hill"
+maintainer:          "justin@so.dang.cool"
+copyright:           "Copyright (c) 2021 J.R. Hill"
 
 extra-source-files:
 - README.md
@@ -17,7 +17,7 @@ category:            Command Line
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/hiljusti/fib#readme>
+description:         Please see the README on GitHub at <https://github.com/boonipepper/fib#readme>
 
 dependencies:
 - base >= 4.7 && < 5

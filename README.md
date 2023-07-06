@@ -1,7 +1,7 @@
 # fib
 
 ```text
-fib v1.1.2
+fib v1.1.2.3
 
 USAGE:
   fib
@@ -22,7 +22,7 @@ When '--until N' is used, all members of the sequence are printed on
 N+1 consecutive lines, including and ending with the Nth number of the
 sequence.
 
-This project lives at https://github.com/hiljusti/fib
+This project lives at https://github.com/booniepepper/fib
 ```
 
 ## Requirements
@@ -42,7 +42,7 @@ This project lives at https://github.com/hiljusti/fib
 
 ```bash
 cd $(mktemp -d) # Or wherever you prefer
-git clone https://github.com/hiljusti/fib.git
+git clone https://github.com/booniepepper/fib.git
 cd ./fib
 stack test && stack install
 ```

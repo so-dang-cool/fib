@@ -3,7 +3,7 @@ Module      : FibCli
 Description : A simple implementation of a Fibonacci sequence CLI.
 Copyright   : Copyright (c) 2021 J.R. Hill
 License     : BSD3
-Maintainer  : hiljusti@pm.me
+Maintainer  : justin@so.dang.cool
 Stability   : Don't Panic
 
 This module is not intended for use as a library for anything other
@@ -63,7 +63,7 @@ docs =
     ]
 
 attribution :: String
-attribution = "This project lives at https://github.com/hiljusti/fib"
+attribution = "This project lives at https://github.com/booniepepper/fib"
 
 -- CLI message handlers
 
