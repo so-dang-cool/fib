@@ -1,7 +1,7 @@
 # fib
 
 ```text
-fib v1.1.2.3
+fib v1.1.2.3.5
 
 USAGE:
   fib
