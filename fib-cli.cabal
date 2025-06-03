@@ -5,7 +5,7 @@ cabal-version: 1.12
 -- see: https://github.com/sol/hpack
 
 name:           fib-cli
-version:        1.1.2.3
+version:        1.1.2.3.5
 synopsis:       A CLI for calculating Fibonacci numbers.
 description:    Please see the README on GitHub at <https://github.com/boonipepper/fib#readme>
 category:       Command Line
